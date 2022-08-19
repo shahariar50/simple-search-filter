@@ -15,8 +15,8 @@ function App() {
         },
         typography: {
           fontFamily: ["'Sen', sans-serif"],
-          body1: { fontSize: 16 },
-          body2: { fontSize: 14 },
+          body1: { fontSize: 16, color: "#637381" },
+          body2: { fontSize: 14, color: "#637381" },
           h1: { fontSize: 40 },
           h2: { fontSize: 32 },
           h3: { fontSize: 24 },

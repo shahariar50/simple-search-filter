@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
+import { useMemo } from "react";
+import "./App.css";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import ProductList from "./components/ProductList";
 
 function App() {
+  const theme = useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode: "dark",
+          background: { default: "#050405", paper: "#17181B" },
+        },
+        typography: {
+          fontFamily: ["'Sen', sans-serif"],
+          body1: { fontSize: 16 },
+          body2: { fontSize: 14 },
+          h1: { fontSize: 40 },
+          h2: { fontSize: 32 },
+          h3: { fontSize: 24 },
+          h4: { fontSize: 20 },
+          h5: { fontSize: 18, fontWeight: 700 },
+          h6: { fontSize: 16, fontWeight: 700 },
+          button: { fontSize: 14 },
+        },
+      }),
+    []
+  );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Header />
+      <ProductList />
+      <Footer />
+    </ThemeProvider>
   );
 }
 

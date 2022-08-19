@@ -27,7 +27,7 @@ const Header = () => {
             component="ul"
             sx={{
               flexGrow: 1,
-              display: "inline-flex",
+              display: { md: "inline-flex", xs: "none" },
               justifyContent: "center",
             }}
           >
@@ -41,7 +41,14 @@ const Header = () => {
               </Box>
             ))}
           </Box>
-          <Box>
+          <Box
+            sx={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+              flexGrow: { xs: 1, md: 0 },
+            }}
+          >
             <IconButton sx={{ margin: "0 6px" }}>
               <img src="/static/header/notification.svg" alt="notification" />
             </IconButton>
@@ -55,8 +62,19 @@ const Header = () => {
                 marginLeft: "6px",
               }}
             >
-              <Typography sx={{ fontSize: 12 }}>Hi Rakib</Typography>
-              <IconButton sx={{ padding: 0, marginLeft: "6px" }}>
+              <Typography
+                sx={{
+                  fontSize: 12,
+                  display: {
+                    xs: "none",
+                    marginRight: "6px",
+                    md: "inline-block",
+                  },
+                }}
+              >
+                Hi Rakib
+              </Typography>
+              <IconButton sx={{ padding: 0 }}>
                 <Avatar
                   src="/static/avatar.jpg"
                   variant="rounded"
@@ -64,6 +82,15 @@ const Header = () => {
                 />
               </IconButton>
             </Box>
+          </Box>
+          <Box
+            sx={{
+              display: { md: "none", xs: "block" },
+            }}
+          >
+            <IconButton sx={{ margin: "0 6px" }}>
+              <img src="/static/header/menu.svg" alt="notification" />
+            </IconButton>
           </Box>
         </Toolbar>
       </Container>

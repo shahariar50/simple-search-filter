@@ -29,6 +29,7 @@ const Header = () => {
               flexGrow: 1,
               display: { md: "inline-flex", xs: "none" },
               justifyContent: "center",
+              margin: 0,
             }}
           >
             {navs.map((nav) => (

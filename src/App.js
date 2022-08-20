@@ -1,7 +1,7 @@
 import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 import { useMemo } from "react";
 import "./App.css";
-import Footer from "./components/Footer";
+import Footer from "./components/footer/Footer";
 import Header from "./components/Header";
 import ProductList from "./components/ProductList";
 

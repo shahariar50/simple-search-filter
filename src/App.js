@@ -12,6 +12,7 @@ function App() {
         palette: {
           mode: "dark",
           background: { default: "#050405", paper: "#17181B" },
+          primary: { main: "#564FB1" },
         },
         typography: {
           fontFamily: ["'Sen', sans-serif"],
@@ -19,11 +20,11 @@ function App() {
           body2: { fontSize: 14, color: "#637381" },
           h1: { fontSize: 40 },
           h2: { fontSize: 32 },
-          h3: { fontSize: 24 },
+          h3: { fontSize: 24, fontWeight: 700 },
           h4: { fontSize: 20 },
           h5: { fontSize: 18, fontWeight: 700 },
           h6: { fontSize: 16, fontWeight: 700 },
-          button: { fontSize: 14 },
+          button: { fontSize: 14, textTransform: "capitalize" },
         },
       }),
     []

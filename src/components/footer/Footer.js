@@ -43,22 +43,22 @@ const Footer = () => {
             >
               <Box component="li" sx={{ padding: "0 8px" }}>
                 <Link href="#">
-                  <img src="/static/footer/facebook.svg" alt="facebook" />
+                  <img src="/static/facebook.svg" alt="facebook" />
                 </Link>
               </Box>
               <Box component="li" sx={{ padding: "0 8px" }}>
                 <Link href="#">
-                  <img src="/static/footer/instagram.svg" alt="instagram" />
+                  <img src="/static/instagram.svg" alt="instagram" />
                 </Link>
               </Box>
               <Box component="li" sx={{ padding: "0 8px" }}>
                 <Link href="#">
-                  <img src="/static/footer/linkedin.svg" alt="linkedin" />
+                  <img src="/static/linkedin.svg" alt="linkedin" />
                 </Link>
               </Box>
               <Box component="li" sx={{ padding: "0 8px" }}>
                 <Link href="#">
-                  <img src="/static/footer/twitter.svg" alt="twitter" />
+                  <img src="/static/twitter.svg" alt="twitter" />
                 </Link>
               </Box>
             </Box>

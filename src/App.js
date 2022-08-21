@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import "./App.css";
 import Footer from "./components/footer/Footer";
 import Header from "./components/Header";
-import ProductList from "./components/ProductList";
+import ProfileList from "./components/ProfileList";
 
 function App() {
   const theme = useMemo(
@@ -13,6 +13,7 @@ function App() {
           mode: "dark",
           background: { default: "#050405", paper: "#17181B" },
           primary: { main: "#564FB1" },
+          text: { primary: "#637381" },
         },
         typography: {
           fontFamily: ["'Sen', sans-serif"],
@@ -34,7 +35,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Header />
-      <ProductList />
+      <ProfileList />
       <Footer />
     </ThemeProvider>
   );

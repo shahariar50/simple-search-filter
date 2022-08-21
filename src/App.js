@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import "./App.css";
 import Footer from "./components/footer/Footer";
 import Header from "./components/Header";
-import ProfileList from "./components/ProfileList";
+import ProfileList from "./components/profile/ProfileList";
 
 function App() {
   const theme = useMemo(

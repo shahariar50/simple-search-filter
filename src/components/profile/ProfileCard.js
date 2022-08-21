@@ -8,6 +8,12 @@ const ProfileCard = ({ profile }) => {
         padding: "35px",
         maxWidth: "370px",
         margin: "0 auto",
+        border: "1px solid transparent",
+        transition: ".3s",
+        "&:hover": {
+          borderColor: "#637381",
+          boxShadow: "0px 0px 72px rgba(145, 158, 171, 0.24)",
+        },
       }}
     >
       <Box

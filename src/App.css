@@ -1,4 +1,4 @@
-.pagination {
-  display: flex;
-  align-items: center;
+.MuiBackdrop-root {
+  background-color: rgba(29, 29, 31, 0.8) !important;
+  backdrop-filter: blur(1px);
 }

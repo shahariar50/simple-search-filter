@@ -13,6 +13,7 @@ function App() {
           mode: "dark",
           background: { default: "#050405", paper: "#17181B" },
           primary: { main: "#564FB1" },
+          secondary: { main: "#050405", contrastText: "#637381" },
           text: { primary: "#637381" },
         },
         typography: {

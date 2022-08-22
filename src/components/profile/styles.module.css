@@ -13,6 +13,9 @@
   justify-content: center;
   cursor: pointer;
 }
+.selected {
+  color: #fff;
+}
 
 .pagination ul :global(.disabled) {
   opacity: 0.5;

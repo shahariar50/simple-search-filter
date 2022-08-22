@@ -49,6 +49,7 @@ const ProfileList = () => {
           count={10}
           classes={{ root: styles.pagination }}
           siblingCount={1}
+          sx={{ "& .Mui-selected": { color: "#fff" } }}
           renderItem={(item) => (
             <PaginationItem
               components={{ previous: Previous, next: Next }}

@@ -2,13 +2,24 @@ import {
   Box,
   Button,
   InputAdornment,
+  Menu,
   OutlinedInput,
   Paper,
   Typography,
 } from "@mui/material";
 import React from "react";
+import FilterOptions from "./FilterOptions";
 
 const SearchBar = () => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <Paper
       sx={{
@@ -43,9 +54,32 @@ const SearchBar = () => {
         variant="contained"
         startIcon={<img src="/static/filterIcon.svg" alt="filter" />}
         sx={{ height: "48px", width: "164px", margin: { xs: "0 auto" } }}
+        id="basic-button"
+        aria-controls={open ? "basic-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
+        onClick={handleClick}
       >
         Advance Filter
       </Button>
+      <div>
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            "aria-labelledby": "basic-button",
+          }}
+          anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+          transformOrigin={{
+            horizontal: "right",
+          }}
+          sx={{ "& .MuiList-root": { padding: 0 } }}
+        >
+          <FilterOptions />
+        </Menu>
+      </div>
     </Paper>
   );
 };

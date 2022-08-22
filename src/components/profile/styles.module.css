@@ -1,32 +1,30 @@
-.pagination {
+.pagination ul {
   justify-content: center;
   display: flex;
   position: relative;
   align-items: center;
+  margin: 0;
+  padding: 0;
 }
-.pagination li {
+.pagination ul li {
   list-style: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
 }
-.pagination li:not(:global(.previous), :global(.next)) {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-}
-.pagination :global(.disabled) {
+
+.pagination ul :global(.disabled) {
   opacity: 0.5;
   cursor: unset;
 }
-.pagination li:first-child {
+.pagination ul li:first-child {
   position: absolute;
   left: 0;
   top: 50%;
   transform: translateY(-50%);
 }
-.pagination li:last-child {
+.pagination ul li:last-child {
   position: absolute;
   right: 0;
   top: 50%;

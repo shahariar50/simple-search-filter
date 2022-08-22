@@ -11,18 +11,23 @@ import ProfileCard from "./ProfileCard";
 import SearchBar from "./SearchBar";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { Stack } from "@mui/system";
 import styles from "./styles.module.css";
-import ReactPaginate from "react-paginate";
+import { Stack } from "@mui/system";
 
 const Previous = () => (
   <Box sx={{ display: "inline-flex", alignItems: "center" }}>
-    <ArrowBackIcon sx={{ marginRight: 1.5 }} /> Previous
+    <ArrowBackIcon sx={{ marginRight: 1.5 }} />
+    <Box component="span" display={{ xs: "none", sm: "unset" }}>
+      Previous
+    </Box>
   </Box>
 );
 const Next = () => (
   <Box sx={{ display: "inline-flex", alignItems: "center" }}>
-    Next <ArrowForwardIcon sx={{ marginLeft: 1.5 }} />
+    <Box component="span" display={{ xs: "none", sm: "unset" }}>
+      Next
+    </Box>
+    <ArrowForwardIcon sx={{ marginLeft: 1.5 }} />
   </Box>
 );
 
@@ -39,28 +44,10 @@ const ProfileList = () => {
           </Grid>
         ))}
       </Grid>
-      {/* <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginTop: "30px",
-        }}
-      >
-        <Box sx={{ display: "inline-flex", alignItems: "center" }}>
-          <ArrowBackIcon sx={{ marginRight: 1.5 }} /> Previous
-        </Box>
-        <Box ul>
-          <Box></Box>
-        </Box>
-        <Box sx={{ display: "inline-flex", alignItems: "center" }}>
-          Next <ArrowForwardIcon sx={{ marginLeft: 1.5 }} />
-        </Box>
-      </Box> */}
-      {/* <Stack spacing={2} sx={{ marginTop: "30px" }}>
+      <Stack spacing={2} sx={{ marginTop: "30px" }}>
         <Pagination
           count={10}
-          classes={{ root: styles.paginationRoot }}
+          classes={{ root: styles.pagination }}
           siblingCount={1}
           renderItem={(item) => (
             <PaginationItem
@@ -69,36 +56,7 @@ const ProfileList = () => {
             />
           )}
         />
-      </Stack> */}
-
-      <Box
-        sx={{
-          marginTop: "30px",
-          "& .selected": {
-            backgroundColor: "background.paper",
-            color: "#fff",
-          },
-        }}
-      >
-        <ReactPaginate
-          breakLabel="..."
-          nextLabel={
-            <Box sx={{ display: "inline-flex", alignItems: "center" }}>
-              Next <ArrowForwardIcon sx={{ marginLeft: 1.5 }} />
-            </Box>
-          }
-          // onPageChange={handlePageClick}
-          pageRangeDisplayed={3}
-          pageCount={10}
-          previousLabel={
-            <Box sx={{ display: "inline-flex", alignItems: "center" }}>
-              <ArrowBackIcon sx={{ marginRight: 1.5 }} /> Previous
-            </Box>
-          }
-          renderOnZeroPageCount={null}
-          className={styles.pagination}
-        />
-      </Box>
+      </Stack>
     </Container>
   );
 };

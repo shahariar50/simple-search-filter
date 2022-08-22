@@ -15,6 +15,7 @@ function App() {
           primary: { main: "#564FB1" },
           secondary: { main: "#050405", contrastText: "#637381" },
           text: { primary: "#637381" },
+          action: { hover: "#050405" },
         },
         typography: {
           fontFamily: ["'Sen', sans-serif"],

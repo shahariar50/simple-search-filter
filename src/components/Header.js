@@ -7,16 +7,30 @@ import {
   IconButton,
   Avatar,
   Typography,
+  Menu,
+  MenuItem,
+  ListItemIcon,
+  ListItemText,
 } from "@mui/material";
 import SingleNav from "./SingleNav";
 
 const Header = () => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
   const navs = [
     { title: "Dashboard", link: "/dashboard", active: true },
     { title: "Campaign", link: "/campaign", active: false },
     { title: "Hypesocial", link: "/hypesocial", active: false },
     { title: "Insights", link: "/insights", active: false },
   ];
+
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <AppBar position="static">
@@ -53,9 +67,39 @@ const Header = () => {
             <IconButton sx={{ margin: "0 6px" }}>
               <img src="/static/header/notification.svg" alt="notification" />
             </IconButton>
-            <IconButton sx={{ margin: "0 6px" }}>
+            <IconButton sx={{ margin: "0 6px" }} onClick={handleClick}>
               <img src="/static/header/moon.svg" alt="notification" />
             </IconButton>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+            >
+              <Box sx={{ width: "174px" }}>
+                <MenuItem sx={{ margin: "0 8px", borderRadius: 1 }}>
+                  <ListItemIcon>
+                    <img src="/static/header/moon.svg" alt="Moon" />
+                  </ListItemIcon>
+                  <ListItemText>Light</ListItemText>
+                </MenuItem>
+                <MenuItem sx={{ margin: "0 8px", borderRadius: 1 }}>
+                  <ListItemIcon>
+                    <img src="/static/header/sun.svg" alt="sun" />
+                  </ListItemIcon>
+                  <ListItemText>Dark</ListItemText>
+                </MenuItem>
+                <MenuItem sx={{ margin: "0 8px", borderRadius: 1 }}>
+                  <ListItemIcon>
+                    <img src="/static/header/system.svg" alt="Moon" />
+                  </ListItemIcon>
+                  <ListItemText>System</ListItemText>
+                </MenuItem>
+              </Box>
+            </Menu>
             <Box
               sx={{
                 display: "inline-flex",

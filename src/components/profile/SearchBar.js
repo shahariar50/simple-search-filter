@@ -54,10 +54,6 @@ const SearchBar = () => {
         variant="contained"
         startIcon={<img src="/static/filterIcon.svg" alt="filter" />}
         sx={{ height: "48px", width: "164px", margin: { xs: "0 auto" } }}
-        id="basic-button"
-        aria-controls={open ? "basic-menu" : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
         Advance Filter

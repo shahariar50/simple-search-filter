@@ -38,10 +38,13 @@ const ProfileList = () => {
   const [page, setPage] = useState(1);
   const [searchStr, setSearchStr] = useState("");
 
+  // Filtering profiles by searching keywork
   const searchedProfileList = searchProfile(PROFILELIST, searchStr);
 
+  // Creating a new array by page number
   const profiles = searchedProfileList?.slice((page - 1) * 6, page * 6);
 
+  // Set the search value and reset page value
   const handleSearchChange = (val) => {
     setSearchStr(val);
     setPage(1);

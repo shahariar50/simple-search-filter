@@ -13,6 +13,7 @@ import {
 import React from "react";
 
 const FilterOptions = () => {
+  // List of Range input values
   const marks = [
     {
       value: 1000,

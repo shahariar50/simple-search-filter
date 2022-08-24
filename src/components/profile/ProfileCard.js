@@ -6,6 +6,7 @@ import LinkedinIcon from "assets/img/icons/LinkedinIcon";
 import TwitterIcon from "assets/img/icons/TwitterIcon";
 import ClockIcon from "assets/img/icons/ClockIcon";
 import LocationIcon from "assets/img/icons/LocationIcon";
+import moment from "moment";
 
 const ProfileCard = ({ profile }) => {
   const theme = useTheme();
@@ -38,7 +39,7 @@ const ProfileCard = ({ profile }) => {
       >
         <img
           style={{ height: "100%", width: "100%" }}
-          src={profile.profile_picture}
+          src={profile.picture}
           alt="profile"
         />
       </Box>
@@ -77,7 +78,7 @@ const ProfileCard = ({ profile }) => {
             stroke: theme.palette.text.primary,
           }}
         />
-        Joined On: {profile.join_time}
+        Joined On: {moment(profile.birthdate).format("MMM Do, YYYY")}
       </Typography>
       <Box
         component="ul"
@@ -152,7 +153,11 @@ const ProfileCard = ({ profile }) => {
           }}
         >
           <Typography
-            sx={{ fontWeight: 700, color: "primary.light" }}
+            sx={{
+              fontWeight: 700,
+              color: "primary.light",
+              textTransform: "capitalize",
+            }}
             textAlign="center"
           >
             {profile.gender}

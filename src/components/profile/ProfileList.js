@@ -42,7 +42,7 @@ const ProfileList = () => {
       </Box>
       <Grid container spacing={4} justifyContent="center">
         {PROFILELIST.map((profile) => (
-          <Grid key={profile.id} item xs md={5} lg={4}>
+          <Grid key={profile.birthdate} item xs md={5} lg={4}>
             <ProfileCard profile={profile} />
           </Grid>
         ))}

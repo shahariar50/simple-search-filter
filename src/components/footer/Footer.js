@@ -1,20 +1,37 @@
 import React from "react";
-import { Grid, Link, Paper, Typography, Box, Container } from "@mui/material";
+import {
+  Grid,
+  Link,
+  Paper,
+  Typography,
+  Box,
+  Container,
+  useTheme,
+} from "@mui/material";
 import LinkList from "./LinkList";
 import {
   ADVERTISERLINKS,
   COMPANYLINKS,
   INFLUENCERLINKS,
 } from "../../constants/footerLinks";
+import { useThemeModeContext } from "hooks/useThemeMode";
+import Logo from "assets/img/Logo";
+import FacebookIcon from "assets/img/icons/FacebookIcon";
+import InstagramIcon from "assets/img/icons/InstagramIcon";
+import LinkedinIcon from "assets/img/icons/LinkedinIcon";
+import TwitterIcon from "assets/img/icons/TwitterIcon";
 
 const Footer = () => {
+  const { mode } = useThemeModeContext();
+  const theme = useTheme();
+
   return (
     <Paper sx={{ paddingTop: "70px", paddingBottom: "35px" }}>
       <Container>
         <Box
           sx={{ marginBottom: "24px", textAlign: { xs: "center", md: "left" } }}
         >
-          <img src="/static/logo.svg" alt="logo" />
+          <Logo style={{ fill: mode === "dark" ? "#fff" : "#000" }} />
         </Box>
         <Grid container sx={{ marginBottom: { xs: 0, sm: 0.5 } }}>
           <Grid md={4} xs={12} sx={{ marginBottom: { xs: 4, md: 0 } }}>
@@ -43,22 +60,24 @@ const Footer = () => {
             >
               <Box component="li" sx={{ padding: "0 8px" }}>
                 <Link href="#">
-                  <img src="/static/facebook.svg" alt="facebook" />
+                  <FacebookIcon style={{ fill: theme.palette.primary.light }} />
                 </Link>
               </Box>
               <Box component="li" sx={{ padding: "0 8px" }}>
                 <Link href="#">
-                  <img src="/static/instagram.svg" alt="instagram" />
+                  <InstagramIcon
+                    style={{ fill: theme.palette.primary.light }}
+                  />
                 </Link>
               </Box>
               <Box component="li" sx={{ padding: "0 8px" }}>
                 <Link href="#">
-                  <img src="/static/linkedin.svg" alt="linkedin" />
+                  <LinkedinIcon style={{ fill: theme.palette.primary.light }} />
                 </Link>
               </Box>
               <Box component="li" sx={{ padding: "0 8px" }}>
                 <Link href="#">
-                  <img src="/static/twitter.svg" alt="twitter" />
+                  <TwitterIcon style={{ fill: theme.palette.primary.light }} />
                 </Link>
               </Box>
             </Box>

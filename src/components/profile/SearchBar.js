@@ -6,13 +6,16 @@ import {
   OutlinedInput,
   Paper,
   Typography,
+  useTheme,
 } from "@mui/material";
+import SearchIcon from "assets/img/icons/SearchIcon";
 import React from "react";
 import FilterOptions from "./FilterOptions";
 
 const SearchBar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const theme = useTheme();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -43,7 +46,7 @@ const SearchBar = () => {
           fullWidth
           startAdornment={
             <InputAdornment position="start">
-              <img src="/static/search.svg" alt="search" />
+              <SearchIcon style={{ stroke: theme.palette.text.primary }} />
             </InputAdornment>
           }
           sx={{

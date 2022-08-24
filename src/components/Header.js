@@ -11,14 +11,22 @@ import {
   MenuItem,
   ListItemIcon,
   ListItemText,
+  useTheme,
 } from "@mui/material";
 import SingleNav from "./SingleNav";
 import { useThemeModeContext } from "../hooks/useThemeMode";
+import NotificationIcon from "assets/img/icons/NotificationIcon";
+import SunIcon from "assets/img/icons/SunIcon";
+import MoonIcon from "assets/img/icons/MoonIcon";
+import SystemIcon from "assets/img/icons/SystemIcon";
+import MenuIcon from "assets/img/icons/MenuIcon";
+import Logo from "assets/img/Logo";
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { handleChangeMode } = useThemeModeContext();
   const { mode } = useThemeModeContext();
+  const theme = useTheme();
 
   const navs = [
     { title: "Dashboard", link: "/dashboard", active: true },
@@ -41,7 +49,7 @@ const Header = () => {
     <AppBar position="static" sx={{ backgroundColor: "background.paper" }}>
       <Container>
         <Toolbar disableGutters>
-          <img src="/static/logo.svg" alt="logo" />
+          <Logo style={{ fill: mode === "dark" ? "#fff" : "#000" }} />
           <Box
             component="ul"
             sx={{
@@ -70,10 +78,14 @@ const Header = () => {
             }}
           >
             <IconButton sx={{ margin: "0 6px" }}>
-              <img src="/static/header/notification.svg" alt="notification" />
+              <NotificationIcon style={{ fill: theme.palette.text.primary }} />
             </IconButton>
             <IconButton sx={{ margin: "0 6px" }} onClick={handleClick}>
-              <img src="/static/header/moon.svg" alt="notification" />
+              {mode === "dark" ? (
+                <SunIcon style={{ fill: theme.palette.text.primary }} />
+              ) : (
+                <MoonIcon style={{ fill: theme.palette.text.primary }} />
+              )}
             </IconButton>
             <Menu
               id="basic-menu"
@@ -90,7 +102,7 @@ const Header = () => {
                   onClick={() => changeMode("light")}
                 >
                   <ListItemIcon>
-                    <img src="/static/header/sun.svg" alt="sun" />
+                    <SunIcon style={{ fill: theme.palette.text.primary }} />
                   </ListItemIcon>
                   <ListItemText>Light</ListItemText>
                 </MenuItem>
@@ -99,14 +111,14 @@ const Header = () => {
                   onClick={() => changeMode("dark")}
                 >
                   <ListItemIcon>
-                    <img src="/static/header/moon.svg" alt="Moon" />
+                    <MoonIcon style={{ fill: theme.palette.text.primary }} />
                   </ListItemIcon>
 
                   <ListItemText>Dark</ListItemText>
                 </MenuItem>
                 <MenuItem sx={{ margin: "0 8px", borderRadius: 1 }}>
                   <ListItemIcon>
-                    <img src="/static/header/system.svg" alt="Moon" />
+                    <SystemIcon style={{ fill: theme.palette.text.primary }} />
                   </ListItemIcon>
                   <ListItemText>System</ListItemText>
                 </MenuItem>
@@ -153,7 +165,7 @@ const Header = () => {
             }}
           >
             <IconButton sx={{ margin: "0 6px" }}>
-              <img src="/static/header/menu.svg" alt="notification" />
+              <MenuIcon style={{ fill: theme.palette.text.primary }} />
             </IconButton>
           </Box>
         </Toolbar>

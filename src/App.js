@@ -27,7 +27,7 @@ function App() {
                 primary: { main: "#564FB1", light: "#564FB1" },
                 secondary: { main: "#fff", contrastText: "#231F20" },
                 text: { primary: "#231F20", secondary: "#231F20" },
-                action: { hover: "#050405" },
+                action: { hover: "#d1d1d1" },
               }),
         },
         typography: {

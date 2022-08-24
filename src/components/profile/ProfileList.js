@@ -55,7 +55,7 @@ const ProfileList = () => {
           sx={{
             "& .Mui-selected": {
               color: "#fff",
-              backgroundColor: mode === "light" && "#17181B",
+              backgroundColor: mode === "light" && "#17181B !important",
             },
           }}
           renderItem={(item) => (

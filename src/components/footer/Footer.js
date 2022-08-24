@@ -34,7 +34,7 @@ const Footer = () => {
           <Logo style={{ fill: mode === "dark" ? "#fff" : "#000" }} />
         </Box>
         <Grid container sx={{ marginBottom: { xs: 0, sm: 0.5 } }}>
-          <Grid md={4} xs={12} sx={{ marginBottom: { xs: 4, md: 0 } }}>
+          <Grid item md={4} xs={12} sx={{ marginBottom: { xs: 4, md: 0 } }}>
             <Typography
               variant="body2"
               sx={{
@@ -82,15 +82,15 @@ const Footer = () => {
               </Box>
             </Box>
           </Grid>
-          <Grid container md={8} xs={12}>
-            <Grid sm={4} xs={6}>
+          <Grid item container md={8} xs={12}>
+            <Grid item sm={4} xs={6}>
               <LinkList title="Company" links={COMPANYLINKS} />
             </Grid>
-            <Grid sm={8} xs={6} container>
-              <Grid xs={12} sm={6}>
+            <Grid item sm={8} xs={6} container>
+              <Grid item xs={12} sm={6}>
                 <LinkList title="Influencer" links={INFLUENCERLINKS} />
               </Grid>
-              <Grid xs={12} sm={6}>
+              <Grid item xs={12} sm={6}>
                 <LinkList title="Advertiser" links={ADVERTISERLINKS} />
               </Grid>
             </Grid>

@@ -14,6 +14,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import styles from "./styles.module.css";
 import { Stack } from "@mui/system";
 import { useThemeModeContext } from "../../hooks/useThemeMode";
+import { searchProfile } from "utils/generalUtils";
 
 const Previous = () => (
   <Box sx={{ display: "inline-flex", alignItems: "center" }}>
@@ -35,13 +36,25 @@ const Next = () => (
 const ProfileList = () => {
   const { mode } = useThemeModeContext();
   const [page, setPage] = useState(1);
+  const [searchStr, setSearchStr] = useState("");
 
-  const profiles = PROFILELIST.slice((page - 1) * 6, page * 6);
+  const searchedProfileList = searchProfile(PROFILELIST, searchStr);
+
+  const profiles = searchedProfileList?.slice((page - 1) * 6, page * 6);
+
+  const handleSearchChange = (val) => {
+    setSearchStr(val);
+    setPage(1);
+  };
 
   return (
     <Container sx={{ paddingTop: "30px", paddingBottom: "80px" }}>
       <Box sx={{ marginBottom: "30px" }}>
-        <SearchBar />
+        <SearchBar
+          searchStr={searchStr}
+          setSearchStr={handleSearchChange}
+          profileCount={searchedProfileList.length}
+        />
       </Box>
       <Grid container spacing={4} justifyContent="center">
         {profiles.map((profile) => (
@@ -50,30 +63,31 @@ const ProfileList = () => {
           </Grid>
         ))}
       </Grid>
-      <Stack spacing={2} sx={{ marginTop: "30px" }}>
-        <Pagination
-          count={Math.ceil(PROFILELIST.length / 6)}
-          classes={{ root: styles.pagination }}
-          siblingCount={1}
-          sx={{
-            "& .Mui-selected": {
-              color: "#fff",
-              backgroundColor: mode === "light" && "#17181B !important",
-            },
-          }}
-          renderItem={(item) => (
-            <PaginationItem
-              components={{ previous: Previous, next: Next }}
-              {...item}
-            />
-          )}
-          page={page}
-          onChange={(e, p) => {
-            console.log(p);
-            setPage(p);
-          }}
-        />
-      </Stack>
+      {searchedProfileList.length > 6 && (
+        <Stack spacing={2} sx={{ marginTop: "30px" }}>
+          <Pagination
+            count={Math.ceil(searchedProfileList.length / 6)}
+            classes={{ root: styles.pagination }}
+            siblingCount={1}
+            sx={{
+              "& .Mui-selected": {
+                color: "#fff",
+                backgroundColor: mode === "light" && "#17181B !important",
+              },
+            }}
+            renderItem={(item) => (
+              <PaginationItem
+                components={{ previous: Previous, next: Next }}
+                {...item}
+              />
+            )}
+            page={page}
+            onChange={(e, p) => {
+              setPage(p);
+            }}
+          />
+        </Stack>
+      )}
     </Container>
   );
 };

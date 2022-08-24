@@ -12,7 +12,7 @@ import SearchIcon from "assets/img/icons/SearchIcon";
 import React from "react";
 import FilterOptions from "./FilterOptions";
 
-const SearchBar = () => {
+const SearchBar = ({ searchStr, setSearchStr, profileCount }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const theme = useTheme();
@@ -32,7 +32,7 @@ const SearchBar = () => {
         flexWrap: { xs: "wrap", md: "nowrap" },
       }}
     >
-      <Typography variant="h3">Profile (100)</Typography>
+      <Typography variant="h3">Profile ({profileCount || 0})</Typography>
       <Box
         sx={{
           flexGrow: 1,
@@ -55,6 +55,10 @@ const SearchBar = () => {
             fontWeight: 400,
           }}
           placeholder="Search Profile"
+          value={searchStr}
+          onChange={({ target }) => {
+            setSearchStr(target.value);
+          }}
         />
       </Box>
       <Button
@@ -77,6 +81,7 @@ const SearchBar = () => {
           anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
           transformOrigin={{
             horizontal: "right",
+            vertical: "top",
           }}
           sx={{ "& .MuiList-root": { padding: 0 } }}
         >

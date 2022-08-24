@@ -43,8 +43,12 @@ const ProfileCard = ({ profile }) => {
           alt="profile"
         />
       </Box>
-      <Typography variant="h3" textAlign="center" sx={{ marginBottom: "10px" }}>
-        {profile.name}
+      <Typography
+        variant="h3"
+        textAlign="center"
+        sx={{ marginBottom: "10px", textTransform: "capitalize" }}
+      >
+        {profile.first_name} {profile.last_name}
       </Typography>
       <Typography
         variant="body2"

@@ -12,10 +12,9 @@ const LinkList = ({ title = "", links = [] }) => {
         sx={{ listStyle: "none", padding: 0, margin: 0, marginBottom: 2.5 }}
       >
         {links.map((link) => (
-          <Box component="li" sx={{ marginBottom: 1 }}>
+          <Box component="li" sx={{ marginBottom: 1 }} key={link?.id}>
             <Link
               variant="body2"
-              key={link?.id}
               href={link.link}
               sx={{ color: "#637381", textDecoration: "none" }}
             >

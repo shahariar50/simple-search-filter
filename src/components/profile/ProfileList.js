@@ -5,7 +5,7 @@ import {
   Pagination,
   PaginationItem,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { PROFILELIST } from "../../constants/profiles";
 import ProfileCard from "./ProfileCard";
 import SearchBar from "./SearchBar";
@@ -34,6 +34,9 @@ const Next = () => (
 
 const ProfileList = () => {
   const { mode } = useThemeModeContext();
+  const [page, setPage] = useState(1);
+
+  const profiles = PROFILELIST.slice((page - 1) * 6, page * 6);
 
   return (
     <Container sx={{ paddingTop: "30px", paddingBottom: "80px" }}>
@@ -41,7 +44,7 @@ const ProfileList = () => {
         <SearchBar />
       </Box>
       <Grid container spacing={4} justifyContent="center">
-        {PROFILELIST.map((profile) => (
+        {profiles.map((profile) => (
           <Grid key={profile.birthdate} item xs md={5} lg={4}>
             <ProfileCard profile={profile} />
           </Grid>
@@ -49,7 +52,7 @@ const ProfileList = () => {
       </Grid>
       <Stack spacing={2} sx={{ marginTop: "30px" }}>
         <Pagination
-          count={10}
+          count={Math.ceil(PROFILELIST.length / 6)}
           classes={{ root: styles.pagination }}
           siblingCount={1}
           sx={{
@@ -64,6 +67,11 @@ const ProfileList = () => {
               {...item}
             />
           )}
+          page={page}
+          onChange={(e, p) => {
+            console.log(p);
+            setPage(p);
+          }}
         />
       </Stack>
     </Container>

@@ -43,13 +43,12 @@ const FilterOptions = () => {
       label: "1000k",
     },
   ];
-
   return (
     <Box sx={{ width: "300px" }}>
       <Typography
         variant="h6"
         sx={{
-          color: "#fff",
+          color: "text.secondary",
           padding: "20px",
           borderBottom: "1px solid",
           borderColor: "text.primary",

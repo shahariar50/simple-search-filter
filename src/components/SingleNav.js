@@ -14,6 +14,7 @@ const SingleNav = ({ active = false, title = "" }) => {
         padding: "10px 15px",
         "&:hover": {
           background: "#202124",
+          color: "#fff",
         },
       }}
     >

@@ -13,6 +13,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import styles from "./styles.module.css";
 import { Stack } from "@mui/system";
+import { useThemeModeContext } from "../../hooks/useThemeMode";
 
 const Previous = () => (
   <Box sx={{ display: "inline-flex", alignItems: "center" }}>
@@ -32,6 +33,8 @@ const Next = () => (
 );
 
 const ProfileList = () => {
+  const { mode } = useThemeModeContext();
+
   return (
     <Container sx={{ paddingTop: "30px", paddingBottom: "80px" }}>
       <Box sx={{ marginBottom: "30px" }}>
@@ -49,7 +52,12 @@ const ProfileList = () => {
           count={10}
           classes={{ root: styles.pagination }}
           siblingCount={1}
-          sx={{ "& .Mui-selected": { color: "#fff" } }}
+          sx={{
+            "& .Mui-selected": {
+              color: "#fff",
+              backgroundColor: mode === "light" && "#17181B",
+            },
+          }}
           renderItem={(item) => (
             <PaginationItem
               components={{ previous: Previous, next: Next }}

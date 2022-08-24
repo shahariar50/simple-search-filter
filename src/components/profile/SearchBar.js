@@ -46,7 +46,11 @@ const SearchBar = () => {
               <img src="/static/search.svg" alt="search" />
             </InputAdornment>
           }
-          sx={{ backgroundColor: "#202124", fontSize: "14px", fontWeight: 400 }}
+          sx={{
+            backgroundColor: "secondary.main",
+            fontSize: "14px",
+            fontWeight: 400,
+          }}
           placeholder="Search Profile"
         />
       </Box>

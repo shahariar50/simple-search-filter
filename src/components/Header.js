@@ -13,9 +13,12 @@ import {
   ListItemText,
 } from "@mui/material";
 import SingleNav from "./SingleNav";
+import { useThemeModeContext } from "../hooks/useThemeMode";
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const { handleChangeMode } = useThemeModeContext();
+  const { mode } = useThemeModeContext();
 
   const navs = [
     { title: "Dashboard", link: "/dashboard", active: true },
@@ -23,17 +26,19 @@ const Header = () => {
     { title: "Hypesocial", link: "/hypesocial", active: false },
     { title: "Insights", link: "/insights", active: false },
   ];
-
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
+
+  const changeMode = (value) => {
+    handleChangeMode(value);
     setAnchorEl(null);
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ backgroundColor: "background.paper" }}>
       <Container>
         <Toolbar disableGutters>
           <img src="/static/logo.svg" alt="logo" />
@@ -74,22 +79,29 @@ const Header = () => {
               id="basic-menu"
               anchorEl={anchorEl}
               open={open}
-              onClose={handleClose}
+              onClose={() => setAnchorEl(null)}
               MenuListProps={{
                 "aria-labelledby": "basic-button",
               }}
             >
               <Box sx={{ width: "174px" }}>
-                <MenuItem sx={{ margin: "0 8px", borderRadius: 1 }}>
-                  <ListItemIcon>
-                    <img src="/static/header/moon.svg" alt="Moon" />
-                  </ListItemIcon>
-                  <ListItemText>Light</ListItemText>
-                </MenuItem>
-                <MenuItem sx={{ margin: "0 8px", borderRadius: 1 }}>
+                <MenuItem
+                  sx={{ margin: "0 8px", borderRadius: 1 }}
+                  onClick={() => changeMode("light")}
+                >
                   <ListItemIcon>
                     <img src="/static/header/sun.svg" alt="sun" />
                   </ListItemIcon>
+                  <ListItemText>Light</ListItemText>
+                </MenuItem>
+                <MenuItem
+                  sx={{ margin: "0 8px", borderRadius: 1 }}
+                  onClick={() => changeMode("dark")}
+                >
+                  <ListItemIcon>
+                    <img src="/static/header/moon.svg" alt="Moon" />
+                  </ListItemIcon>
+
                   <ListItemText>Dark</ListItemText>
                 </MenuItem>
                 <MenuItem sx={{ margin: "0 8px", borderRadius: 1 }}>
@@ -115,9 +127,16 @@ const Header = () => {
                     marginRight: "6px",
                     md: "inline-block",
                   },
+                  color: "text.primary",
                 }}
+                variant="body2"
               >
-                Hi Rakib
+                <span
+                  style={{ color: mode === "dark" ? "##959CB6" : "#424242" }}
+                >
+                  Hi,
+                </span>{" "}
+                Rakib
               </Typography>
               <IconButton sx={{ padding: 0 }}>
                 <Avatar

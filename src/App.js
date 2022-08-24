@@ -4,23 +4,36 @@ import "./App.css";
 import Footer from "./components/footer/Footer";
 import Header from "./components/Header";
 import ProfileList from "./components/profile/ProfileList";
+import { useThemeModeContext } from "./hooks/useThemeMode";
 
 function App() {
+  const { mode } = useThemeModeContext();
+
   const theme = useMemo(
     () =>
       createTheme({
         palette: {
-          mode: "dark",
-          background: { default: "#050405", paper: "#17181B" },
-          primary: { main: "#564FB1" },
-          secondary: { main: "#050405", contrastText: "#637381" },
-          text: { primary: "#637381" },
-          action: { hover: "#050405" },
+          mode,
+          ...(mode === "dark"
+            ? {
+                background: { default: "#050405", paper: "#17181B" },
+                primary: { main: "#564FB1", light: "#96B3CD" },
+                secondary: { main: "#050405", contrastText: "#637381" },
+                text: { primary: "#637381", secondary: "#fff" },
+                action: { hover: "#050405" },
+              }
+            : {
+                background: { default: "#fff", paper: "#F7F7F8" },
+                primary: { main: "#564FB1", light: "#564FB1" },
+                secondary: { main: "#fff", contrastText: "#231F20" },
+                text: { primary: "#231F20", secondary: "#231F20" },
+                action: { hover: "#050405" },
+              }),
         },
         typography: {
           fontFamily: ["'Sen', sans-serif"],
-          body1: { fontSize: 16, color: "#637381" },
-          body2: { fontSize: 14, color: "#637381" },
+          body1: { fontSize: 16 },
+          body2: { fontSize: 14 },
           h1: { fontSize: 40 },
           h2: { fontSize: 32 },
           h3: { fontSize: 24, fontWeight: 700 },
@@ -30,7 +43,7 @@ function App() {
           button: { fontSize: 14, textTransform: "capitalize" },
         },
       }),
-    []
+    [mode]
   );
 
   return (

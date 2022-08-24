@@ -109,7 +109,10 @@ const ProfileCard = ({ profile }) => {
             padding: "2.5px 5px",
           }}
         >
-          <Typography sx={{ fontWeight: 700 }} textAlign="center">
+          <Typography
+            sx={{ fontWeight: 700, color: "primary.light" }}
+            textAlign="center"
+          >
             {profile.followers}
           </Typography>
           <Typography textAlign="center">Followers</Typography>
@@ -122,7 +125,10 @@ const ProfileCard = ({ profile }) => {
             padding: "5px 10px",
           }}
         >
-          <Typography sx={{ fontWeight: 700 }} textAlign="center">
+          <Typography
+            sx={{ fontWeight: 700, color: "primary.light" }}
+            textAlign="center"
+          >
             {profile.category}
           </Typography>
           <Typography textAlign="center">Categories</Typography>
@@ -135,7 +141,10 @@ const ProfileCard = ({ profile }) => {
             padding: "5px 10px",
           }}
         >
-          <Typography sx={{ fontWeight: 700 }} textAlign="center">
+          <Typography
+            sx={{ fontWeight: 700, color: "primary.light" }}
+            textAlign="center"
+          >
             {profile.gender}
           </Typography>
           <Typography textAlign="center">Gender</Typography>
